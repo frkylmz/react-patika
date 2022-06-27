@@ -1,10 +1,11 @@
 import "./App.css";
 
-import { Formik, Field, Form } from "formik";
+import { Formik } from "formik";
 
 function App() {
   return (
     <div className="App">
+      <h1>Sign Up</h1>
       <Formik
         initialValues={{
           firstName: "",
@@ -15,32 +16,29 @@ function App() {
           console.log(values);
         }}
       >
-        <Form>
-          <label htmlFor="firstName">First Name</label>
-          <Field id="firstName" name="firstName" placeholder="Jane" />
+        {({ handleSubmit, handleChange }) => (
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="firstName">First Name</label>
+            <input type="firstName" onChange={handleChange} />
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <label htmlFor="lastName">Last Name</label>
-          <Field id="lastName" name="lastName" placeholder="Doe" />
+            <label htmlFor="lastName">Last Name</label>
+            <input type="lastName" onChange={handleChange} />
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <label htmlFor="email">Email</label>
-          <Field
-            id="email"
-            name="email"
-            placeholder="jane@acme.com"
-            type="email"
-          />
+            <label htmlFor="email">Email</label>
+            <input type="email" onChange={handleChange} />
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <button type="submit">Submit</button>
-        </Form>
+            <button type="submit">Submit</button>
+          </form>
+        )}
       </Formik>
     </div>
   );
