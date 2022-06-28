@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useMemo, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Header from "./components/Header";
 
 function App() {
