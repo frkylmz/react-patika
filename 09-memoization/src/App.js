@@ -1,25 +1,22 @@
 import "./App.css";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import Header from "./components/Header";
 
 function App() {
   const [number, setNumber] = useState(0);
   const [text, setText] = useState("");
 
-  const data = useMemo(() => {
-    return calculateObject(number);
-  }, [number]);
-
-  // const data = calculateObject();
+  const increment = useCallback(() => {
+    setNumber((prevState) => prevState + 1);
+  }, []);
 
   return (
     <div className="App">
-      <Header data={data} />
+      <Header increment={increment} />
 
       <hr />
 
       <h1>{number}</h1>
-      <button onClick={() => setNumber(number + 1)}>Click</button>
 
       <br />
       <br />
@@ -27,14 +24,6 @@ function App() {
       <input value={text} onChange={({ target }) => setText(target.value)} />
     </div>
   );
-}
-
-function calculateObject(number) {
-  console.log("Calculating");
-  for (let i = 0; i < 100; i++) {}
-  console.log("Calculating completed!");
-
-  return { name: "Faruk", number };
 }
 
 export default App;
