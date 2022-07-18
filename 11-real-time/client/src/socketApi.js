@@ -18,3 +18,10 @@ export const send = (color) => {
     color
   ); /* emit --> clienttaysak backend'e, backendeysek client'a data göndermeyi sağlar. */
 };
+
+export const subscribe = (cb) => {
+  socket.on("receive", (color) => {
+    console.log(color);
+    cb(color);
+  });
+};
