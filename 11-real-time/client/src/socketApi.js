@@ -11,3 +11,10 @@ export const init = () => {
     console.log("Sunucuya bağlantı başarıyla gerçekleşti.")
   );
 };
+
+export const send = (color) => {
+  socket.emit(
+    "newColor",
+    color
+  ); /* emit --> clienttaysak backend'e, backendeysek client'a data göndermeyi sağlar. */
+};
